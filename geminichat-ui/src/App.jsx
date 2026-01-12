@@ -33,7 +33,7 @@ function App() {
     try {
       // Connecting to your local .NET API
       // Make sure you keep the "/api/chat" at the end!
-        const response = await fetch("https://azhar-gpt-backend.onrender.com/api/chat", {
+        const response = await fetch("https://azhargptdotnet.onrender.com/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: originalInput }),
