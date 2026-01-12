@@ -4,18 +4,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddHttpClient<GeminiService>(); // Register Gemini Service
+builder.Services.AddHttpClient<GeminiService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Enable CORS so React (running on a different port) can access this API
+// --- CHANGED SECTION STARTS HERE ---
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp",
-        policy => policy.WithOrigins("http://localhost:5173") // Default Vite port
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin() // changed from WithOrigins(...)
                         .AllowAnyMethod()
                         .AllowAnyHeader());
 });
+// --- CHANGED SECTION ENDS HERE ---
 
 var app = builder.Build();
 
@@ -26,7 +27,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowReactApp");
+// --- UPDATE THIS LINE TOO ---
+app.UseCors("AllowAll"); 
+
 app.UseAuthorization();
 app.MapControllers();
 
