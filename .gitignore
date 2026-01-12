@@ -1,0 +1,11 @@
+# Ignore .NET junk
+bin/
+obj/
+.vscode/
+appsettings.json
+appsettings.Development.json
+
+# Ignore Frontend junk
+node_modules/
+dist/
+.env

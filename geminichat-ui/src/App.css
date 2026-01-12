@@ -1,0 +1,152 @@
+/* Reset & Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  background-color: #f4f6fa;
+  color: #333;
+}
+
+/* Fixed Header */
+header {
+  background-color: #00b88f;
+  color: white;
+  padding: 18px 30px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Main Chat Container */
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* Calculate height: 100% screen minus header height (approx 70px) */
+  height: 100%;
+  padding: 90px 20px 20px; 
+  max-width: 1000px; /* Optional: limits width on large screens */
+  margin: 0 auto;    /* Centers the chat on large screens */
+}
+
+/* Chat Log Area */
+.chat-log {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  scroll-behavior: smooth;
+  padding-right: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Message Bubbles */
+.msg {
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  max-width: 90%;
+  font-size: 16px;
+}
+
+.msg.user {
+  background-color: #d0f0ff;
+  align-self: flex-end; /* Pushes user msg to the right */
+  color: #000;
+}
+
+.msg.bot {
+  background-color: #e8e8e8;
+  align-self: flex-start; /* Pushes bot msg to the left */
+}
+
+/* Markdown Styling within Bot Messages */
+.msg.bot strong {
+  font-weight: bold;
+}
+
+.msg.bot pre {
+  background: #f0f0f0; /* Slightly darker than bubble */
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-top: 5px;
+}
+
+.msg.bot code {
+  font-family: Consolas, monospace;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* Input Area */
+.chat-form {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd; /* Added subtle separator */
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #00b88f;
+}
+
+button {
+  background-color: #00b88f;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #009f7a;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  header {
+    font-size: 20px;
+    padding: 14px 15px;
+  }
+  .chat-wrapper {
+    padding: 80px 10px 15px;
+  }
+  input[type="text"], button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
